@@ -8,11 +8,23 @@ export default class Util
         return false;
     }
 
+    
+    
+    
+    
     public static IsNullOrUndefinedOrEmpty(x : string | null | undefined) : boolean
     {
         if(this.IsNullOrUndefined(x)) return true;
         if(typeof x === "string" && x.length <= 0) return true;
 
         return false;
+    }
+
+
+
+
+    public static GetCommandLineParameters() : string[]
+    {
+        return process.argv.slice(2);
     }
 }
