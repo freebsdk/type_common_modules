@@ -4,7 +4,7 @@ import fs from "fs";
 
 
 
-export default class ConfigManager 
+export default class CfgMgr 
 {
     private static configMap : Map<string, string> = new Map<string, string>();
 
@@ -22,7 +22,7 @@ export default class ConfigManager
 
         var cfgObj = JSON.parse(data);
         for(var key in cfgObj) {
-            ConfigManager.configMap.set(key, cfgObj[key]);
+            CfgMgr.configMap.set(key, cfgObj[key]);
         }
     }
 
@@ -32,7 +32,7 @@ export default class ConfigManager
 
     public static GetString(key : string) : string 
     {
-        const val = ConfigManager.configMap.get(key);
+        const val = CfgMgr.configMap.get(key);
         if(typeof val === "undefined") {
             console.error("[ERROR] Config property is not found > "+key);
             process.exit(-1);
@@ -46,6 +46,6 @@ export default class ConfigManager
 
     public static GetNumber(key : string) : number
     {
-        return Number(ConfigManager.GetString(key));
+        return Number(CfgMgr.GetString(key));
     }
 }

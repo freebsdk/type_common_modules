@@ -8,7 +8,7 @@ import {MakeResult} from "./Result";
 
 export default class DBCtxMgr {
 
-    private static ctxPoolRepo : Map<string /*dbname*/, any> = new Map<string, any>();
+    private static ctxPoolRepo : Map<string /*database name*/, any> = new Map<string, any>();
 
 
 
@@ -30,11 +30,9 @@ export default class DBCtxMgr {
 
     public static async QueryAsync(databaseName : string, query : string, values : any) {
         return new Promise<any>((resolve) => {
-
-            // Get db_pool handle from the pool
             const thePool = this.ctxPoolRepo.get(databaseName);
             if(thePool === undefined) {
-                resolve(MakeResult("invalid_db_name",`not exist database name :${databaseName}`));
+                resolve(MakeResult("invalid_db_name",`could not found the database name :${databaseName}`));
                 return;
             }
 
