@@ -13,7 +13,19 @@
     "@types/mysql": "^2.15.8",
     "@types/redis": "^2.8.16",
     "moment": "^2.24.0",
-    "mysql": "^2.17.1",
+    "mysql": "^2.18.1",
     "redis": "^3.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freebsdk/type_common_modules.git"
+  },
+  "bugs": {
+    "url": "https://github.com/freebsdk/type_common_modules/issues"
+  },
+  "homepage": "https://github.com/freebsdk/type_common_modules#readme",
+  "devDependencies": {
+    "@types/moment": "^2.13.0",
+    "@types/mysql": "^2.15.9"
   }
 }
