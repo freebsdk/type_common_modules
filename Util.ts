@@ -27,4 +27,16 @@ export default class Util
     {
         return process.argv.slice(2);
     }
+
+
+
+
+    public static SleepAsync(msec : number) 
+    {
+        return new Promise((resolve) =>{
+            setTimeout(()=>{
+                resolve();
+            }, msec);
+        });
+    }
 }

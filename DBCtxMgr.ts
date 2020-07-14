@@ -39,10 +39,12 @@ export default class DBCtxMgr {
 
             thePool.getConnection((err1:MysqlError, conn:PoolConnection) => {
                 if(err1) {
+                    conn.release();
                     console.log(err1.message);
                     resolve(MakeResult("get_db_connection_fail", err1.message));
                     return;
                 }
+
                 conn.query(query, values, (err2 : MysqlError, rows : any) => {
                     conn.release();
                     if(err2) {
