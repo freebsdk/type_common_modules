@@ -5,22 +5,25 @@ import redis from "redis";
 
 
 
-export default class RedisCtxMgr {
-
-    private ctxMap : Map<number /*database*/, any> = new Map<number, any>();
-
-
-
+export default class RedisCtxMgr 
+{
+    private static ctx_map_ : Map<string /*key*/, redis.RedisClient> = new Map<string, redis.RedisClient>();
+    
 
 
-    public RegisterDB(host : string, port : number, database : number) {
-        const newCtx = redis.createClient({
+    
+
+    public static Init(key : string, host : string, port : number, database : number) 
+    {
+        console.log(`Redis initialization to ${host}:${port} ... Start`);
+        const new_ctx = redis.createClient({
             host : host,
             port : port,
             db : database
         });
 
-        this.ctxMap.set(database, newCtx);
+        this.ctx_map_.set(key, new_ctx);
+        console.log(`Redis initialization to ${host}:${port} ... Complete`);
     }
 
 
@@ -28,8 +31,9 @@ export default class RedisCtxMgr {
 
 
 
-    public GetCtx(database : number) {
-        return this.ctxMap.get(database);
+    public static Context(key : string) : redis.RedisClient
+    {
+        return this.ctx_map_.get(key);
     }
 
 

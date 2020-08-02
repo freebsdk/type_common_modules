@@ -1,4 +1,4 @@
-var os = require('os');
+const os = require('os');
 
 
 
@@ -67,4 +67,5 @@ export default class Util
 
         return ip_adrs_list;
     }
+
 }
