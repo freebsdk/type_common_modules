@@ -1,5 +1,5 @@
 import fs from "fs";
-
+import path from "path"
 
 
 
@@ -11,14 +11,16 @@ export default class CfgMgr
 
 
 
-    public static LoadFromFile(fullPath : string) 
-    {
-        if(fs.existsSync(fullPath) == false) {
-            console.error("[Error] Config file is not found. > "+fullPath);
+    public static LoadFromFile(full_path : string) 
+    { 
+        const resolved_path = path.resolve(full_path);
+
+        if(fs.existsSync(resolved_path) == false) {
+            console.error("[Error] Config file is not found. > "+resolved_path);
             process.exit(-1);
         }
 
-        const data = fs.readFileSync(fullPath, 'utf8');
+        const data = fs.readFileSync(resolved_path, 'utf8');
 
         var cfgObj = JSON.parse(data);
         for(var key in cfgObj) {
