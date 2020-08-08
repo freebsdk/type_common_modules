@@ -27,11 +27,7 @@
   "devDependencies": {
     "@types/express": "^4.17.3",
     "@types/moment": "^2.13.0",
-<<<<<<< HEAD
     "@types/mysql": "^2.15.15",
-=======
-    "@types/mysql": "^2.15.14",
->>>>>>> dbbbc2012b46385bf81f5218b657c6dac4d1c713
     "@types/redis": "^2.8.25",
     "@types/socket.io": "^2.1.4"
   }
